@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:fragment="sidebar">
+		<nav class="navbar fixed-top">
+			<div class="container-fluid">
+				<button class="open_button" data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+					<span><img alt="openlogo" src="/images/logo_open.png"
+						width="50"></span>
+				</button>
+				<div class="offcanvas offcanvas-end" tabindex="-1"
+					id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+					<div class="offcanvas-header justify-content-end">
+						<button type="button" data-bs-dismiss="offcanvas"
+							aria-label="Close">
+							<img alt="closelogo" src="/images/logo.png" width="50">
+						</button>
+					</div>
+					   <div class="nav_title">
+					   <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ADAM</h5>
+					   <h3 id="name_label">신 초 아 <span>님</span></h3> 
+					   <h3 id="comnum_label">10001</h3>
+					   <div class="line">.</div>
+					   </div>
+						
+					<div class="offcanvas-body">
+					<form class="d-flex mt-3" role="search">
+							<input class="form-control me-2" type="search"
+								placeholder="Search" aria-label="Search">
+							<button class="search_btn btn" type="submit">Search</button>
+						</form>
+						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+							<li class="nav-item"><a class="nav-link" aria-current="page"
+								href="/member/userMain">홈으로</a></li>
+								
+							<li class="nav-item"><a class="nav-link" href="/Pages/myPage">마이페이지</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="/admin/projects">기획리스트</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="/Pages/calendar">이달의 플랜</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="/admin/project/new">기획하기</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="/Pages/background">배경테스트</a>
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>

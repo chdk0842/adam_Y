@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	
+	</script>
+</th:block>
+
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+body, .bgImage {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.bgImage {
+	position: absolute;
+	/* background-image: url("../images/background_It.jpg");
+	opacity: 0.9; */
+	background-size: cover;
+	background-position: top;
+	-webkit-filter: grayscale(70%);
+	/* Safari 6.0 - 9.0 */
+	filter: grayscale(70%);
+	z-index: -1;
+}
+
+.blobCont {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+}
+
+.blob {
+	position: absolute;
+}
+
+.main_wrap {
+	
+	position: absolute;
+	top: 80%;
+	transform: translateY(-50%);
+	width: 100%;
+	height: auto;
+	text-align: center;
+	
+}
+ 
+</style>
+</th:block>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+	
+  <div class="bgImage"></div>
+<svg class="blobCont" >
+		<image xlink:href="../images/background_It.jpg" mask="url(#mask)"  width="100%" height="100%" preserveAspectRatio="xMidYMid slice" />
+		<defs>
+			<mask id="mask" x="0" y="0">
+				<g style="filter: url(#gooey)">
+          <circle class="blob" cx="10%" cy="10%" r="80" fill="white" stroke="white"/>
+					<circle class="blob" cx="50%" cy="10%" r="40" fill="white" stroke="white"/>
+					<circle class="blob" cx="17%" cy="15%" r="70" fill="white" stroke="white"/>
+					<circle class="blob" cx="90%" cy="20%" r="120" fill="white" stroke="white"/>
+					<circle class="blob" cx="30%" cy="25%" r="30" fill="white" stroke="white"/>
+          <circle class="blob" cx="50%" cy="60%" r="80" fill="white" stroke="white"/>
+					<circle class="blob" cx="70%" cy="90%" r="10" fill="white" stroke="white"/>
+					<circle class="blob" cx="90%" cy="60%" r="90" fill="white" stroke="white"/>
+					<circle class="blob" cx="30%" cy="90%" r="80" fill="white" stroke="white"/>
+          <circle class="blob" cx="10%" cy="10%" r="80" fill="white" stroke="white"/>
+					<circle class="blob" cx="50%" cy="10%" r="20" fill="white" stroke="white"/>
+					<circle class="blob" cx="17%" cy="15%" r="70" fill="white" stroke="white"/>
+					<circle class="blob" cx="40%" cy="20%" r="120" fill="white" stroke="white"/>
+					<circle class="blob" cx="30%" cy="25%" r="30" fill="white" stroke="white"/>
+          <circle class="blob" cx="80%" cy="60%" r="80" fill="white" stroke="white"/>
+					<circle class="blob" cx="17%" cy="10%" r="100" fill="white" stroke="white"/>
+					<circle class="blob" cx="40%" cy="60%" r="90" fill="white" stroke="white"/>
+					<circle class="blob" cx="10%" cy="50%" r="80" fill="white" stroke="white"/>
+				</g>
+			</mask>
+			<filter id="gooey" height="130%">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+				<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+    	</filter>
+		</defs>
+	</svg>
+<div class="main_wrap">	
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary"  style="background: none; color: white; width: 200px; text-shadow: 4px 2px 2px gray;" onclick = "location.href = 'member/adminnew'">대표 회원가입</button>
+  <button type="button" class="btn btn-primary" style="background: none; color: white; width: 200px; text-shadow: 4px 2px 2px gray;" onclick = "location.href = 'member/membernew'">일반 회원가입</button>
+</div>
+<input class="btn btn-primary btn_login" style="background: none; color: white; width: 400px; text-shadow: 4px 2px 2px gray;" type="button" value="로그인" onclick = "location.href = 'member/login'">
+</div>
+	
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+    <script  src="/./js/script.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+html {
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	min-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+.font_color_blue {
+	color: #00278C;
+	font-weight: bold;
+}
+
+/* header */
+.logo {
+	text-align: center;
+	padding: 30px;
+}
+
+/* header */
+
+/* sidebar */
+button {
+	border: none;
+	background: none;
+}
+
+.offcanvas-body, .offcanvas-header, .nav-item a {
+	background-color: #00278C;
+	color: white;
+	font-weight: bold;
+}
+
+.nav-item {
+	padding: 15px 0;
+}
+
+.nav-item a:hover {
+	font-size: 1.5rem;
+	color: white;
+}
+
+.search_btn {
+	color: white;
+}
+
+.search_btn:hover {
+	background-color: white;
+	color: #00278C;
+}
+
+.nav_title {
+	text-align: center;
+	background-color: #00278C;
+}
+
+#offcanvasNavbarLabel {
+	font-size: 2rem;
+	color: white;
+	font-weight: bold;
+}
+
+#name_label {
+	color: white;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+#name_label span {
+	font-weight: 300;
+	font-size: 1rem;
+}
+
+#comnum_label {
+	font-size: 1.2rem;
+	color: white;
+	text-align: right;
+	margin-right: 20px;
+	padding: 10px 0;
+}
+
+.line {
+	width: 90%;
+	height: 4px;
+	background: white;
+	margin: 0px auto;
+}
+
+/* sidebar */
+
+/* main */
+.main_bg {
+	background-color: #00278C;
+	text-align: center;
+	/* align-items: center;
+	vertical-align:middle; */
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+	height: auto;
+}
+
+.btn-group {
+	display: block;
+	margin: 0 auto;
+	padding-top: 40px;
+}
+
+.btn-primary {
+	background-color: #00278C;
+	font-weight: bold;
+	font-size: 1.5rem;
+	border: none;
+	width: 300px;
+}
+
+.btn_login {
+	width: 600px;
+	font-size: 1.8rem;
+	margin-top: 40px;
+}
+
+/* main */
+
+/* 로그인 후 main */
+.user_main_bg {
+	background-color: white;
+	text-align: center;
+	/* align-items: center;
+	vertical-align:middle; */
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+	height: auto;
+}
+
+/* 로그인 후 main */
+
+/*  adminForm  */
+.header_title {
+	text-align: center;
+}
+
+.header_title h3 {
+	font-weight: bold;
+}
+
+.header_title h5 {
+	font-weight: 600;
+}
+
+.form_title h3 {
+	padding: 20px 0;
+	font-weight: bold;
+}
+
+.form_wrap {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.btn_add {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.btn_add:hover {
+	background-color: white;
+	color: #00278C;
+}
+
+.btn_delete {
+	width: 100%;
+	background-color: white;
+	color: #00278C;
+}
+
+.btn_delete:hover {
+	background-color: white;
+	color: #00278C;
+}
+
+/*  adminForm  */
+
+/* loginForm */
+.loginform_wrap {
+	width: 50%;
+	margin: 150px auto;
+}
+
+.input-group-text {
+	background: white;
+	border: none;
+	width: 100px;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.form-check {
+	margin-bottom: 30px;
+	margin-left: 20px;
+}
+
+.form-check-label {
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+/* loginForm */
+
+/* myPage */
+.btn-danger {
+	background: white;
+	color: red;
+	font-weight: bold;
+	border: none;
+}
+
+/* myPage */
+
+/* projectList */
+.table {
+	width: 70%;
+    margin: 60px auto;
+}
+
+.page-item a{
+   border: none;	
+   font-weight: bold;
+   color: black;
+}
+
+.list_title:hover {
+	text-decoration: underline;
+}
+
+/* projectList */
+

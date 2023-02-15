@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout3}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	    //회원가입이 실패했을때
+		$(document).ready(function(){
+        	var errorMessage = [[${errorMessage}]];
+        	if(errorMessage != null){
+            	alert(errorMessage);
+        	}
+    	});
+	</script>
+</th:block>
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+<style>
+		.fieldError {
+			color: #bd2130;
+		}
+	</style>
+</th:block>
+
+</head>
+<body>
+	<div layout:fragment="content">
+	
+	<div class="header_title">
+	  <h3>대표회원가입</h3>
+	  <h5>회원가입을 하시면 <a class="font_color_blue">아</a>이디어를 <a class="font_color_blue">담</a>을 수 있습니다.</h5>
+	</div>
+	
+		<div class="form_wrap">
+	<div class="form_title"><h3>회원정보</h3></div>
+			<form class="row g-3" action="/member/adminnew" method="post" th:object="${adminFormDto}">
+				<div class="col-md-12">
+					<label th:for="name">이름</label>
+					<input type="text" class="form-control" th:field="*{name}" placeholder="이름을 입력해주세요">
+						<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect Data</p>
+				</div>
+				<div class="col-md-12">
+					<label th:for="id" >아이디</label>
+					<input type="text" class="form-control" th:field="*{userId}" placeholder="아이디를 입력해주세요">
+					<p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="fieldError">Incorrect Data</p>
+				</div>
+				<div class="col-md-12">
+					<label th:for="password">비밀번호</label>
+					<input type="password" th:field="*{password}" class="form-control" placeholder="비밀번호를 입력해주세요">
+					<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect Data</p>
+				</div>
+				<div class="col-md-12">
+					<label th:for="comName">회사명</label>
+					<input type="text" class="form-control" placeholder="회사명을 입력해주세요" th:field="*{comName}">
+					<p th:if="${#fields.hasErrors('comName')}" th:errors="*{comName}" class="fieldError">Incorrect Data</p>
+				</div>
+				<div class="col-md-12">
+					<label for="comNum">회사코드</label>
+					<input type="text" class="form-control" th:field="*{comNum}" style="color: gray; font-weight:bold; text-align: right;" readonly="readonly">
+				</div>
+						
+				<div class="col-12">
+					<button class="btn btn-primary btn_add" type="submit" >가입하기</button>
+					<button type="button" class="btn btn-primary btn_delete" onclick = "location.href = '/'">취소</button>
+				</div>
+				
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

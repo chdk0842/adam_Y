@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout2}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			$("#searchBtn").on("click", function(e) {
+				e.preventDefault();
+				page(0);
+			});
+		});
+
+		function page(page) {
+			var searchDateType = $("#searchDateType").val();
+			var searchSellStatus = $("#searchSellStatus").val();
+			var searchBy = $("#searchBy").val();
+			var searchQuery = $("#searchQuery").val();
+
+			location.href = "/admin/projects/" + page + "?searchDateType="
+					+ searchDateType + "&searchSellStatus=" + searchSellStatus
+					+ "&searchBy=" + searchBy + "&searchQuery=" + searchQuery;
+		}
+	</script>
+</th:block>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+</style>
+</th:block>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<div class="header_title">
+			<h3>프로젝트 기획 리스트</h3>
+			<h5>
+				<a class="font_color_blue">아</a>이디어가 <a class="font_color_blue">담</a>긴
+				곳
+			</h5>
+		</div>
+
+		<form th:action="@{'/admin/projects/' + ${projects.number}}"
+			role="form" method="get" th:object="${projects}">
+			<!-- 검색창 -->
+			<div class="d-flex justify-content-center"
+				th:object="${projectSearchDto}" style="height: 40px;">
+				<!-- 상품 등록일 -->
+				<select th:field="*{searchDateType}" class="form-select"
+					style="width: auto;">
+					<option value="all">전체기간</option>
+					<option value="1d">1일</option>
+					<option value="1w">1주</option>
+					<option value="1m">1개월</option>
+					<option value="6m">6개월</option>
+				</select>
+				<!-- 상품판매 상태 -->
+				<select th:field="*{searchSellStatus}" class="form-select" style="width: auto;">
+					<option value="">프로젝트상태(전체)</option>
+					<option value="Y">Y</option>
+					<option value="N">N</option>
+				</select>
+				<!-- 상품명, 등록자 선택 -->
+				<select th:field="*{searchBy}" class="form-select"
+					style="width: auto;">
+					<option value="projectName">프로젝트명</option>
+					<option value="createdBy">등록자</option>
+				</select>
+				<!-- 검색창 -->
+				<input type="text" th:field="*{searchQuery}" class="form-control"
+					placeholder="검색어 입력" style="width: auto;">
+				<button id="searchBtn" type="submit" class="btn btn-primary mb-3"
+					style="height: 100%;">검색</button>
+			</div>
+
+			<table class="table"
+				style='word-break: break-all; text-align: center;'>
+				<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">프로젝트명</th>
+						<th scope="col">등록자</th>
+						<th scope="col">등록일</th>
+						<th scope="col" colspan="2">진행여부</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- projects.getContent() :조회된 데이터를 가져온다.(List로 변환) -->
+					<tr th:each="project, status: ${projects.getContent()}">
+						<th th:text="${project.id}" scope="row"></th>
+
+						<td><a th:href="'/admin/project/'+${project.id}"
+							th:text="${project.projectName}"></a></td>
+						<td th:text="${project.createdBy}"></td>
+						<td th:text="${project.regTime}"></td>
+						<td th:text="${project.projectSellStatus == T(com.adam.constant.ProjectSellStatus).Y} ? 'Y' : 'N'"></td>
+					</tr>
+
+				</tbody>
+			</table>
+
+			<!-- 페이징 버튼 -->
+			<!-- start = (현재 페이지 번호/보여줄 페이지수) + 1 , 페이지 시작 번호-->
+			<!-- end = start + (보여줄 페이지수 - 1 ), 페이지 끝 번호-->
+			<nav
+				th:with="start=${(projects.number/maxPage)*maxPage + 1}
+			,end=(${(projects.totalPages == 0) ? 1 : (start + (maxPage - 1) < projects.totalPages ? start + (maxPage - 1) : projects.totalPages)})"
+				aria-label="Page navigation example">
+				<ul class="pagination d-flex justify-content-center">
+					<li class="page-project" th:classappend="${projects.first}?'disabled'">
+						<a class="page-link"
+						th:onclick="'javascript:page(' + ${projects.number - 1} +')'">이전</a>
+					</li>
+					<li class="page-project"
+						th:each="page: ${#numbers.sequence(start, end)}"
+						th:classappend="${projects.number eq page-1}?'active':''"><a
+						class="page-link" th:inline="text"
+						th:onclick="'javascript:page(' + ${page - 1} +')'">[[${page}]]</a>
+					</li>
+					<li class="page-project" th:classappend="${projects.last}?'disabled'">
+						<a class="page-link"
+						th:onclick="'javascript:page(' + ${projects.number + 1} +')'">다음</a>
+					</li>
+				</ul>
+			</nav>
+			
+			
+
+		</form>
+		
+	</div>
+</body>
+</html>

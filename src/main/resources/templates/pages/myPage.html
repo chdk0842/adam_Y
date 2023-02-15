@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout2}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+<style>
+
+</style>
+</th:block>
+
+</head>
+<body>
+
+<div layout:fragment="content">
+<div class="header_title">
+	  <h3>마이페이지</h3>
+	  <h5><a class="font_color_blue">아</a>이디어를 <a class="font_color_blue">담</a>을 수 있습니다.</h5>
+	</div>
+	
+		<div class="form_wrap">
+	<div class="form_title"><h3>회원정보</h3></div>
+			<form class="row g-3 needs-validation" novalidate>
+				<div class="col-md-12">
+					<label for="validationCustom01" class="form-label">이름</label> <input type="text" class="form-control"
+						id="validationCustom01" required value="신초아" readonly="readonly">
+					<div class="valid-feedback">Looks good!</div>
+				</div>
+				<div class="col-md-12">
+					<label for="validationCustom02" class="form-label">아이디</label> <input type="text" class="form-control"
+						id="validationCustom02" required value="tlschdk" readonly="readonly">
+					<div class="valid-feedback">Looks good!</div>
+				</div>
+				<div class="col-md-12">
+					<label for="validationCustom03" class="form-label">비밀번호</label> <input type="password" class="form-control"
+						id="validationCustom03" required>
+					<div class="valid-feedback">Looks good!</div>
+				</div>
+				<div class="col-md-12">
+					<label for="validationCustom04" class="form-label">비밀번호확인</label> <input type="password" class="form-control"
+						id="validationCustom04" required>
+					<div class="valid-feedback">Looks good!</div>
+				</div>
+				
+				<div class="col-md-12">
+					<label for="validationCustom05" class="form-label">회사코드</label> <input type="text" class="form-control"
+						id="validationCustom05" style="color: gray; font-weight:bold;" required value="10001" readonly="readonly">
+					<div class="valid-feedback">Looks good!</div>
+				</div>
+						
+				<div class="col-3">
+				<button type="button" class="btn btn-danger">탈퇴하기</button>
+				</div>
+				
+				<div class="col-12">
+					<button class="btn btn-primary btn_add" type="submit">수정하기</button>
+					<button type="button" class="btn btn-primary btn_delete" onclick = "location.href = '/member/userMain'">취소</button>
+				</div>
+			</form> 
+			</div>
+</div>
+</body>
+</html>
